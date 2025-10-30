@@ -22,7 +22,7 @@ const mi_array = [
     descripcionLarga: "El Galaxy Z Flip 6 revoluciona el diseño con su pantalla exterior Super AMOLED de 3.4″ totalmente funcional y sistema de bisagra Flex mejorado. Cuando se despliega revela una pantalla principal FHD+ de 6.7″ a 120Hz. Perfecto para selfies con FlexCam y grabación hands-free, combina innovación tecnológica con un factor de forma único que redefine la portabilidad.",
     precio: 1099,
     categoria: "smartphones",
-    imagen: "img/SamsungGalaxyZ Flip7.webp" // ruta con espacio: no rompe el render
+    imagen: "img/SamsungGalaxyZ Flip7.webp"
   },
   {
     nombre: "Samsung Galaxy Tab S9 FE",
@@ -62,7 +62,7 @@ const mi_array = [
     descripcionLarga: "La Smart Band 8 Pro eleva el seguimiento fitness con pantalla AMOLED rectangular de 1.74″, GPS integrado y más de 150 modos deportivos profesionales. Monitoriza frecuencia cardíaca 24/7, SpO2, calidad del sueño y niveles de estrés con sensores de alta precisión. Resistencia 5ATM y autonomía de hasta 14 días hacen de esta pulsera la compañera perfecta para tu estilo de vida activo.",
     precio: 79,
     categoria: "wearables",
-    imagen: "img/XIAOMISmartbandXiaomiRedmiSmartBandProNegro.webp" // ojo: sin "img/"
+    imagen: "img/XIAOMISmartbandXiaomiRedmiSmartBandProNegro.webp"
   },
   {
     nombre: "Xiaomi 13 Lite",
@@ -154,7 +154,7 @@ const mi_array = [
   }
 ];
 
-// ===== 2) Render de tarjetas (una única versión) =====
+// ===== 2) Render de tarjetas =====
 function crearTarjeta(producto) {
   return `
     <div class="tarjeta">
@@ -180,63 +180,58 @@ function crearTarjeta(producto) {
 function mostrarTarjetas(productos) {
   const contenedor = document.querySelector('.tarjetas');
   
+  if (!contenedor) {
+    console.error('❌ No existe .tarjetas en el DOM');
+    return;
+  }
+  
   contenedor.innerHTML = productos.map(crearTarjeta).join('');
-  console.log(`Pintadas ${productos.length} tarjetas`);
+  console.log(` Pintadas ${productos.length} tarjetas`);
 }
 
-// ===== 4) SISTEMA DE FILTROS =====
+// ===== 3) SISTEMA DE FILTROS =====
 
 function filtrarProducto(categoria) {
   if (categoria === 'todos') {
     return mi_array;
   }
-  else 
-    return mi_array.filter(producto => producto.categoria === categoria);
+  return mi_array.filter(producto => producto.categoria === categoria);
 }
-  // 1. Quitamos la clase "activo" de TODOS los botones
 
 function activarBoton(botonActivo) {
-
   const todosLosBotones = document.querySelectorAll('.seccion.filtros button');
   todosLosBotones.forEach(boton => {
     boton.classList.remove('activo');
   });
-
   botonActivo.classList.add('activo');
 }
 
 function configurarFiltros() {
   const botonesFiltro = document.querySelectorAll('.seccion.filtros button');
- // 2. Añadimos la clase "activo" solo al botón que se hizo clic
-
- // Paracada botón un escuchador de clicks
+  
   botonesFiltro.forEach(boton => {
     boton.addEventListener('click', () => {
-
-      //Obtenemos el valor de cada producto
+      // Obtener la categoría del botón
       const categoriaElegida = boton.getAttribute('data-cat');
-
-      //Filtramos los productos
-      const productosFiltrados = filtrarProducto(categoriaElegida);
-
-      //Marcamos visualmente el botón activo
-      activarBoton(boton);
-      //Repintamos las tarjetas
-      mostrarTarjetas(productosFiltrados);
-      console.log(`🔍 Filtrado por: ${categoriaElegida}`);
-
-
-      // ===== 5) Iniciar todo cuando cargue la página =====
-
       
-    })
-  })
+      // Filtrar los productos
+      const productosFiltrados = filtrarProducto(categoriaElegida);
+      
+      // Marcar visualmente el botón activo
+      activarBoton(boton);
+      
+      // Repintar las tarjetas
+      mostrarTarjetas(productosFiltrados);
+      
+      console.log(`🔍 Filtrado por: ${categoriaElegida}`);
+    });
+  });
 }
-      // ===== 5) Iniciar todo cuando cargue la página =====
-      document.addEventListener('DOMContentLoaded', () => {
-      console.log('🚀 Iniciando tienda...');
-      mostrarTarjetas(mi_array); //Mostramos todos los productos
-      configurarFiltros(); //Activamos los filtros
-      console.log('✅ Tienda lista');
-}); 
 
+// ===== 4) INICIALIZACIÓN =====
+document.addEventListener('DOMContentLoaded', () => {
+  console.log(' Iniciando tienda...');
+  mostrarTarjetas(mi_array);
+  configurarFiltros();
+  console.log(' Tienda lista');
+});

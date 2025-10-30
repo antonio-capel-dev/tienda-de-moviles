@@ -1,6 +1,4 @@
-/* =========================================================
-   VARIABLES DE COLOR Y ESTILO BASE
-   ========================================================= */
+/* VARIABLES DE COLOR Y ESTILO BASE */
 :root {
   --rojo                 : #e60000;
   --negro                : #1a1a1a;
@@ -15,9 +13,7 @@
   --blanco               : #ffffff;
 }
 
-/* =========================================================
-   RESETEO BÁSICO
-   ========================================================= */
+/*  RESETEO BÁSICO */
 * {
   box-sizing             : border-box;
   margin                 : 0;
@@ -33,9 +29,7 @@ body {
   min-height              : 100vh;
 }
 
-/* =========================================================
-   ENCABEZADO PRINCIPAL
-   ========================================================= */
+/*  ENCABEZADO PRINCIPAL */
 h1 {
   text-align              : center;
   font-size               : 2rem;
@@ -44,9 +38,7 @@ h1 {
   margin-bottom           : 30px;
 }
 
-/* =========================================================
-   FILTROS DE CATEGORÍA
-   ========================================================= */
+/* FILTROS DE CATEGORÍA */
 .seccion.filtros {
   display                 : flex;
   justify-content         : center;
@@ -72,31 +64,21 @@ h1 {
   color                   : var(--blanco);
 }
 
-/* 
-   CONTENEDOR DE TARJETAS
-    */
+/* CONTENEDOR DE TARJETAS - GRID DE 3 COLUMNAS */
 .tarjetas {
-  display                 : grid;
-  grid-template-columns   : repeat(auto-fit, minmax(250px, 1fr));
-  gap                     : 20px;
+  display                 : grid;                    /* Grid en lugar de Flex */
+  grid-template-columns   : repeat(auto-fit, minmax(250px, 1fr));        /* 3 columnas de igual tamaño */
+  gap                     : 20px;                    /* Espacio entre tarjetas */
   max-width               : 1200px;
   margin                  : 0 auto;
-
-  max-width               : 1200px;
-  margin                  : 0 auto;
-  padding                 : 16px 16px;
+  padding                 : 16px;
 }
 
-/* 
-
-   TARJETA DE PRODUCTO
-
-   */
+/*  TARJETA DE PRODUCTO */
 .tarjeta {
   background              : var(--blanco);
   border-radius           : 10px;
   padding                 : 20px;
-  margin-bottom           : 18px;
   box-shadow              : 0 0 6px rgba(0, 0, 0, 0.01);
   transition              : transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -106,19 +88,15 @@ h1 {
   box-shadow              : 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 
-   ESTRUCTURA DE CONTENIDO (3 COLUMNAS)
-    */
+/* ESTRUCTURA DE CONTENIDO DENTRO DE CADA TARJETA
+   */
 .tarjeta-contenido {
-  display                 : flex;
-  grid-template-columns   : 180px 1fr 200px;
+  display                 : flex;           /* Flex para disposición horizontal */
   align-items             : center;
   gap                     : 18px;
 }
 
-/* =========================================================
-   IMAGEN DEL PRODUCTO
-   ========================================================= */
+/*  IMAGEN DEL PRODUCTO */
 .tarjeta-imagen {
   display                 : flex;
   align-items             : center;
@@ -126,8 +104,9 @@ h1 {
   background              : #f9fafb;
   border-radius           : 8px;
   overflow                : hidden;
-  width                   : 180px;
-  height                  : 180px;
+  width                   : 120px;           /* Reducido para que quepa mejor */
+  height                  : 120px;
+  flex-shrink             : 0;               /* No se encoge */
 }
 
 .tarjeta-imagen img {
@@ -137,49 +116,46 @@ h1 {
   padding                 : 10px;
 }
 
-/* =========================================================
-   INFORMACIÓN DEL PRODUCTO
-   ========================================================= */
+/* INFORMACIÓN DEL PRODUCTO */
 .tarjeta-info {
   display                 : flex;
   flex-direction          : column;
   justify-content         : center;
   gap                     : 8px;
+  flex                    : 1;               /* Ocupa el espacio disponible */
 }
 
 .tarjeta-info h3 {
-  font-size               : 1.1rem;
+  font-size               : 1rem;           /* Reducido ligeramente */
   font-weight             : 800;
   color                   : var(--negro);
 }
 
 .tarjeta-info p {
   color                   : var(--gris-700);
-  font-size               : 0.95rem;
+  font-size               : 0.85rem;
   line-height             : 1.5;
 }
 
-/* =========================================================
-   SECCIÓN DE PRECIO Y BOTÓN
-   ========================================================= */
+/* SECCIÓN DE PRECIO Y BOTÓN */
 .tarjeta-precio {
   display                 : flex;
   flex-direction          : column;
   align-items             : flex-end;
   justify-content         : center;
   gap                     : 12px;
+  flex-shrink             : 0;              /* No se encoge */
 }
 
 .precio {
-  font-size               : 2rem;
+  font-size               : 1.5rem;         /* Reducido para que quepa */
   font-weight             : 900;
   color                   : var(--rojo);
   letter-spacing          : -0.5px;
 }
 
-/* =========================================================
-   PIE DE TARJETA / BOTÓN CARRITO
-   ========================================================= */
+/* PIE DE TARJETA / BOTÓN CARRITO */
+
 .tarjeta-footer {
   margin-top              : 16px;
   display                 : flex;
@@ -209,43 +185,3 @@ h1 {
   font-size               : 1.1rem;
 }
 
-/* =========================================================
-   RESPONSIVE DESIGN
-   ========================================================= */
-@media (max-width: 900px) {
-  .tarjeta-contenido {
-    grid-template-columns : 160px 1fr 160px;
-  }
-
-  .tarjeta-imagen {
-    width                 : 160px;
-    height                : 160px;
-  }
-
-  .precio {
-    font-size             : 1.6rem;
-  }
-}
-
-@media (max-width: 760px) {
-  .tarjeta-contenido {
-    grid-template-columns : 1fr;
-  }
-
-  .tarjeta-precio {
-    align-items           : flex-start;
-    margin-top            : 10px;
-  }
-
-  .tarjeta-footer {
-    justify-content       : flex-start;
-  }
-
-  .tarjeta-imagen {
-    width                 : 100%;
-    height                : 200px;
-  }
-}
-
-
-/*CLASES DEL 29 de octubre grid
