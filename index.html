@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda de móviles</title>
 
   <link rel="stylesheet" href="/estilos/styles.css">
 
   <!-- Tu JS (ajusta el nombre/ruta REAL del archivo) -->
-  
+
 </head>
+
+
+
 <body>
+  <header>
+    <nav class="seccion filtros">
+      <button data-cat="todos" class="activo">Todos</button>
+      <button data-cat="smartphones">Smartphones</button>
+      <button data-cat="tablets">Tablets</button>
+      <button data-cat="portatiles">Portátiles</button>
+      <button data-cat="wearables">Wearables</button>
+      <button data-cat="auriculares">Auriculares</button>
+    </nav>
+
+  </header>
   <h1>Tienda de móviles</h1>
 
-  <nav class="seccion filtros">
-    <button data-cat="todos" class="activo">Todos</button>
-    <button data-cat="smartphones">Smartphones</button>
-    <button data-cat="tablets">Tablets</button>
-    <button data-cat="portatiles">Portátiles</button>
-    <button data-cat="wearables">Wearables</button>
-    <button data-cat="auriculares">Auriculares</button>
-  </nav>
 
-  
+
+
 
   <section class="tarjetas"></section>
 </body>
@@ -32,4 +40,5 @@
 
 
 <script src="js/javascript-DEFINITIVO-corregido.js"></script>
+
 </html>
