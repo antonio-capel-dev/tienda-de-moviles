@@ -1,6 +1,4 @@
-/* =========================================================
-   VARIABLES DE COLOR Y ESTILO BASE
-   ========================================================= */
+/*  VARIABLES DE COLOR */
 :root {
   --rojo                 : #e60000;
   --negro                : #1a1a1a;
@@ -15,7 +13,11 @@
   --blanco               : #ffffff;
 }
 
+<<<<<<< Updated upstream
 /* RESETEO BÁSICO*/
+=======
+/*  RESET BÁSICO */
+>>>>>>> Stashed changes
 * {
   box-sizing             : border-box;
   margin                 : 0;
@@ -23,13 +25,18 @@
 }
 
 body {
-  font-family            : system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
-  background              : var(--gris-100);
-  color                   : var(--gris-800);
-  line-height             : 1.6;
-  padding                 : 20px;
-  min-height              : 100vh;
+  font-family            : system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
+  background             : var(--gris-100);
+  color                  : var(--gris-800);
+  line-height            : 1.6;
+  min-height             : 100vh;
+  
+  /* GRID para estructura general de la página */
+  display                : grid;
+  grid-template-rows     : auto auto auto 1fr auto;  /* header, hero, filtros, contenido, footer */
+  grid-template-columns  : 1fr;
 }
+
 
 /* ENCABEZADO PRINCIPAL*/
 h1 {
@@ -59,11 +66,163 @@ h1 {
   cursor                  : pointer;
   transition              : all 0.2s ease-in-out;
 }
+/* HEADER CON GRID */
+.header-principal {
+  background             : var(--blanco);
+  box-shadow             : 0 2px 8px rgba(0,0,0,0.1);
+  position               : sticky;
+  top                    : 0;
+  z-index                : 1000;
+  padding                : 16px 0;
+}
+
+.header-contenido {
+  max-width              : 1200px;
+  margin                 : 0 auto;
+  padding                : 0 24px;
+  
+  /* GRID de 3 columnas: Logo | Buscador | Carrito */
+  display                : grid;
+  grid-template-columns  : 200px 1fr 200px;  /* Izq fija | Centro flexible | Der fija */
+  align-items            : center;           /* Centra verticalmente */
+  gap                    : 24px;             /* Espacio entre columnas */
+}
+
+.logo h2 {
+  color                  : var(--rojo);
+  font-size              : 1.6rem;
+  font-weight            : 900;
+  margin                 : 0;
+}
+
+/* Buscador */
+.buscador {
+  display                : flex;             /* Aquí flex es mejor para input+botón */
+  max-width              : 500px;
+  margin                 : 0 auto;
+}
+
+.buscador input {
+  flex                   : 1;
+  padding                : 10px 16px;
+  border                 : 2px solid #ddd;
+  border-right           : none;
+  border-radius          : 8px 0 0 8px;
+  font-size              : 0.95rem;
+}
+
+.buscador input:focus {
+  outline                : none;
+  border-color           : var(--rojo);
+}
+
+.buscador button {
+  padding                : 10px 20px;
+  background             : var(--rojo);
+  color                  : var(--blanco);
+  border                 : none;
+  border-radius          : 0 8px 8px 0;
+  cursor                 : pointer;
+  font-size              : 1.2rem;
+}
+
+.buscador button:hover {
+  background             : #cc0000;
+}
+
+/* Carrito */
+.btn-carrito {
+  padding                : 10px 20px;
+  background             : var(--negro);
+  color                  : var(--blanco);
+  border                 : none;
+  border-radius          : 8px;
+  font-weight            : 700;
+  cursor                 : pointer;
+  position               : relative;
+  width                  : 100%;
+}
+
+.btn-carrito:hover {
+  background             : #333;
+}
+
+.badge-carrito {
+  position               : absolute;
+  top                    : -8px;
+  right                  : -8px;
+  background             : var(--rojo);
+  color                  : var(--blanco);
+  border-radius          : 50%;
+  width                  : 22px;
+  height                 : 22px;
+  
+  /* GRID para centrar el número */
+  display                : grid;
+  place-items            : center;  /* align-items + justify-items center */
+  
+  font-size              : 0.75rem;
+  font-weight            : 900;
+}
+
+/* HERO BANNER */
+.hero-banner {
+  background             : linear-gradient(135deg, var(--rojo), #ff3333);
+  color                  : var(--blanco);
+  text-align             : center;
+  padding                : 50px 24px;
+}
+
+.hero-banner h1 {
+  font-size              : 2.2rem;
+  font-weight            : 900;
+  margin                 : 0 0 8px 0;
+}
+
+.hero-banner p {
+  font-size              : 1.1rem;
+  opacity                : 0.95;
+}
+
+/* FILTROS CON GRID*/
+.seccion.filtros {
+  background             : var(--blanco);
+  padding                : 20px 24px;
+  box-shadow             : 0 2px 4px rgba(0,0,0,0.05);
+  
+  /* GRID para centrar y distribuir los botones */
+  display                : grid;
+  justify-content        : center;           /* Centra horizontalmente */
+  gap                    : 12px;
+}
+
+.seccion.filtros {
+  /* Mejora: Organiza botones en grid auto */
+  display                : grid;
+  grid-template-columns  : repeat(auto-fit, minmax(140px, auto));  /* Botones adaptables */
+  justify-content        : center;
+  gap                    : 12px;
+  padding                : 20px;
+}
+
+.seccion.filtros button {
+  padding                : 12px 24px;
+  background             : var(--blanco);
+  color                  : var(--negro);
+  border                 : 2px solid var(--rojo);
+  border-radius          : 999px;
+  font-weight            : 700;
+  font-size              : 0.9rem;
+  cursor                 : pointer;
+  transition             : all 0.3s ease;
+}
 
 .seccion.filtros button:hover,
 .seccion.filtros button.activo {
-  background              : var(--rojo);
-  color                   : var(--blanco);
+  background             : var(--rojo);
+  color                  : var(--blanco);
+  transform              : translateY(-3px);
+  box-shadow             : 0 6px 16px rgba(230, 0, 0, 0.3);
 }
 
 /* CONTENEDOR DE TARJETAS*/
@@ -86,14 +245,43 @@ h1 {
   transition              : transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.tarjeta:hover {
-  transform               : translateY(-2px);
-  box-shadow              : 0 4px 10px rgba(0, 0, 0, 0.1);
+.tarjetas {
+  display                : grid;
+  
+  /* repeat(auto-fill, minmax(300px, 1fr)) explicado:
+     - auto-fill: Crea tantas columnas como quepan
+     - minmax(300px, 1fr): Cada columna mínimo 300px, máximo 1 fracción del espacio
+     - Resultado: Grid que se adapta automáticamente al ancho de pantalla
+  */
+  grid-template-columns  : repeat(auto-fill, minmax(300px, 1fr));
+  
+  gap                    : 24px;              /* Espacio entre tarjetas */
+  max-width              : 1200px;
+  margin                 : 0 auto;
+  padding                : 0 24px 60px;
 }
 
-/* 
-   ESTRUCTURA DE CONTENIDO (3 COLUMNAS)
-    */
+/*  TARJETA DE PRODUCTO CON GRID */
+.tarjeta {
+  background             : var(--blanco);
+  border-radius          : 12px;
+  padding                : 0;
+  box-shadow             : 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition             : all 0.3s ease;
+  overflow               : hidden;
+  
+
+  display                : grid;
+  grid-template-rows     : 250px auto auto;   /* Imagen fija | Info flexible | Footer auto */
+  grid-template-columns  : 1fr;
+}
+
+.tarjeta:hover {
+  transform              : translateY(-8px);
+  box-shadow             : 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ESTRUCTURA DE CONTENIDO (3 COLUMNAS)*/
 .tarjeta-contenido {
   display: flex;
   flex-direction: column;
@@ -127,17 +315,52 @@ h1 {
   flex-direction          : column;
   gap                     : 8px;
 }
+/* Imagen del producto */
+.tarjeta-imagen {
+  width                  : 100%;
+  height                 : 250px;
+  background             : #f9fafb;
+  
+  /* GRID para centrar la imagen */
+  display                : grid;
+  place-items            : center;           /* Centra horizontal y verticalmente */
+  
+  overflow               : hidden;
+}
+
+.tarjeta-imagen img {
+  width                  : 100%;
+  height                 : 100%;
+  object-fit             : cover;
+  transition             : transform 0.3s ease;
+}
+
+.tarjeta:hover .tarjeta-imagen img {
+  transform              : scale(1.08);
+}
+
+/* Info de la tarjeta */
+.tarjeta-contenido {
+  padding                : 20px;
+  
+  /* GRID para organizar título y descripción */
+  display                : grid;
+  gap                    : 8px;
+  align-content          : start;            /* Alinea contenido arriba */
+}
 
 .tarjeta-info h3 {
-  font-size               : 1.1rem;
-  font-weight             : 800;
-  color                   : var(--negro);
+  color                  : var(--negro);
+  font-size              : 1.05rem;
+  line-height            : 1.3;
+  margin                 : 0;
 }
 
 .tarjeta-info p {
-  color                   : var(--gris-700);
-  font-size               : 0.95rem;
-  line-height             : 1.5;
+  color                  : var(--gris-700);
+  font-size              : 0.88rem;
+  line-height            : 1.5;
+  margin                 : 0;
 }
 
 /* SECCIÓN DE PRECIO Y BOTÓN */
@@ -163,7 +386,24 @@ h1 {
   display                 : flex;
   justify-content         : flex-end;
 }
+/* Precio y botón CON GRID */
+.tarjeta-precio {
+  padding                : 0 20px 20px;
+  display                : grid;
+  grid-template-columns  : auto 1fr;         /* Precio ajustado | Botón flexible */
+  align-items            : center;
+  gap                    : 16px;
+}
+/* GRID de 2 columnas: Precio | Botón */
 
+.precio {
+  font-weight            : 900;
+  color                  : var(--rojo);
+  font-size              : 1.6rem;
+  white-space            : nowrap;
+}
+
+/* Botón de añadir al carrito */
 .btn-ver-mas {
   display                 : inline-grid;
   align-items             : self-end;
@@ -180,13 +420,13 @@ h1 {
 }
 
 .btn-ver-mas:hover {
-  background              : #333333;
+  background             : #cc0000;
+  transform              : scale(1.05);
 }
 
-.icono-carrito {
-  font-size               : 1.1rem;
+.btn-ver-mas:active {
+  transform              : scale(0.95);
 }
-
 
   .precio {
     font-size             : 0.8rem;
@@ -205,3 +445,34 @@ h1 {
     height                : 200px;
   }
 
+/* FOOTER CON GRID */
+.footer-principal {
+  background             : var(--negro);
+  color                  : var(--blanco);
+  padding                : 40px 24px 20px;
+  margin-top             : auto;             /* Empuja el footer al final */
+}
+
+.footer-contenido {
+  max-width              : 1200px;
+  margin                 : 0 auto;
+  
+  /* GRID responsivo de columnas */
+  display                : grid;
+  grid-template-columns  : repeat(auto-fit, minmax(200px, 1fr));  /* Columnas adaptables */
+  gap                    : 32px;
+  margin-bottom          : 20px;
+}
+
+.footer-contenido h4 {
+  color                  : var(--rojo);
+  margin-bottom          : 10px;
+  font-size              : 1rem;
+}
+
+.footer-contenido p {
+  color                  : #ccc;
+  font-size              : 0.9rem;
+  line-height            : 1.6;
+  margin                 : 4px 0;
+}

@@ -5,40 +5,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda de móviles</title>
-
   <link rel="stylesheet" href="/estilos/styles.css">
 
-  <!-- Tu JS (ajusta el nombre/ruta REAL del archivo) -->
-
+  
 </head>
 
-
-
 <body>
-  <header>
-    <nav class="seccion filtros">
-      <button data-cat="todos" class="activo">Todos</button>
-      <button data-cat="smartphones">Smartphones</button>
-      <button data-cat="tablets">Tablets</button>
-      <button data-cat="portatiles">Portátiles</button>
-      <button data-cat="wearables">Wearables</button>
-      <button data-cat="auriculares">Auriculares</button>
-    </nav>
-
-  </header>
   <h1>Tienda de móviles</h1>
 
-
-
-
+  <nav class="seccion filtros">
+    <input type="text" id="buscar" placeholder="Buscar producto">
+    <button data-cat="todos" class="activo">Todos</button>
+    <button data-cat="smartphones">Smartphones</button>
+    <button data-cat="tablets">Tablets</button>
+    <button data-cat="portatiles">Portátiles</button>
+    <button data-cat="wearables">Wearables</button>
+    <button data-cat="auriculares">Auriculares</button>
+    <button data-cat="filtrar">Filtrar</button>
+  </nav>
 
   <section class="tarjetas"></section>
-</body>
 
-
-
+  <footer class="footer-principal">
+    <div class="footer-contenido">
+      <div>
+        <h4>Sobre TechStore</h4>
+        <p>Tu tienda de tecnología de confianza</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p> antonio.capel.dev@gmail.com</p>
+      </div>
+      <div>
+        <h4>Desarrollado por</h4>
+        <p>Antonio - DAW Málaga 2025</p>
+      </div>
+    </div>
+  </footer>
 
 
 <script src="js/javascript-DEFINITIVO-corregido.js"></script>
-
 </html>
