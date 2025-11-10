@@ -1,6 +1,13 @@
 
+
+
+
+
+
+
 const mi_array = [
   {
+    id: 1,
     nombre: "Samsung Galaxy S24 Ultra",
     descripcionCorta: "El buque insignia definitivo con cámara de 200MP y diseño en titanio.",
     precio: 1399,
@@ -8,6 +15,7 @@ const mi_array = [
     imagen: "img/Samsungs24ultra.webp"
   },
   {
+    id: 2,
     nombre: "Samsung Galaxy S24 Plus",
     descripcionCorta: "El equilibrio perfecto entre potencia premium y tamaño manejable.",
     precio: 1099,
@@ -15,6 +23,7 @@ const mi_array = [
     imagen: "img/Samsungs24plus.webp"
   },
   {
+    id: 3,
     nombre: "Samsung Galaxy Tab S9 FE",
     descripcionCorta: "Tablet versátil con S Pen incluido para crear y producir.",
     precio: 549,
@@ -22,6 +31,7 @@ const mi_array = [
     imagen: "img/Samsungs24plus.webp"
   },
   {
+    id: 4,
     nombre: "Xiaomi 14T Pro",
     descripcionCorta: "Fotografía profesional Leica y procesamiento de élite.",
     precio: 799,
@@ -29,6 +39,7 @@ const mi_array = [
     imagen: "img/Xiaomi13Lite.webp"
   },
   {
+    id: 5,
     nombre: "Redmi Note 13 Pro+ 5G",
     descripcionCorta: "El rey de la gama media con cámara de 200MP.",
     precio: 399,
@@ -36,6 +47,7 @@ const mi_array = [
     imagen: "img/RedmiNote13Pro+5G.webp"
   },
   {
+    id: 6,
     nombre: "Xiaomi Pad 6 Pro",
     descripcionCorta: "Potencia y pantalla espectacular para productividad extrema.",
     precio: 499,
@@ -43,6 +55,7 @@ const mi_array = [
     imagen: "img/XiaomiRedmiPad2Pro.webp"
   },
   {
+    id: 7,
     nombre: "Xiaomi Smart Band 8 Pro",
     descripcionCorta: "Seguimiento completo de salud con pantalla AMOLED grande.",
     precio: 79,
@@ -50,6 +63,7 @@ const mi_array = [
     imagen: "img/XIAOMISmartbandXiaomiRedmiSmartBandProNegro.webp"
   },
   {
+    id: 8,
     nombre: "Xiaomi 13 Lite",
     descripcionCorta: "Diseño ultraligero con cámaras duales para selfies perfectos.",
     precio: 399,
@@ -57,6 +71,7 @@ const mi_array = [
     imagen: "img/Xiaomi13Lite.webp"
   },
   {
+    id: 9,
     nombre: "iPhone 15 Pro Max",
     descripcionCorta: "El iPhone más avanzado con titanio y chip A17 Pro.",
     precio: 1469,
@@ -64,6 +79,7 @@ const mi_array = [
     imagen: "img/iphone17promax.webp"
   },
   {
+    id: 10,
     nombre: "iPhone 15",
     descripcionCorta: "La experiencia iPhone esencial con Dynamic Island y USB-C.",
     precio: 959,
@@ -71,6 +87,7 @@ const mi_array = [
     imagen: "img/Iphone17.webp"
   },
   {
+    id: 11,
     nombre: "MacBook Air M3",
     descripcionCorta: "Portátil ultraligero con chip M3 y 18 horas de autonomía.",
     precio: 1299,
@@ -78,6 +95,7 @@ const mi_array = [
     imagen: "img/AppleMacbookAir.webp"
   },
   {
+    id: 12,
     nombre: "iPad Air M2 11″",
     descripcionCorta: "Potencia profesional en diseño ultraligero y versátil.",
     precio: 699,
@@ -85,6 +103,7 @@ const mi_array = [
     imagen: "img/Ipad-Air-m2-11.webp"
   },
   {
+    id: 13,
     nombre: "Apple Watch Series 9",
     descripcionCorta: "Salud avanzada con chip S9 y gestos Double Tap.",
     precio: 449,
@@ -92,6 +111,7 @@ const mi_array = [
     imagen: "img/AppleWatchSeries9.webp"
   },
   {
+    id: 14,
     nombre: "OPPO Find X7 Pro",
     descripcionCorta: "Sistema fotográfico Hasselblad para fotografía profesional móvil.",
     precio: 1199,
@@ -99,6 +119,7 @@ const mi_array = [
     imagen: "img/OppoFindX3pro5g.webp"
   },
   {
+    id: 15,
     nombre: "Oppo Reno 11 Pro 5G",
     descripcionCorta: "Elegancia curva con cámara Sony y carga ultrarrápida.",
     precio: 599,
@@ -106,6 +127,7 @@ const mi_array = [
     imagen: "img/OppoReno6Pro5g.webp"
   },
   {
+    id: 16,
     nombre: "Oppo A79 5G",
     descripcionCorta: "5G accesible con pantalla fluida y batería de larga duración.",
     precio: 249,
@@ -113,6 +135,7 @@ const mi_array = [
     imagen: "img/OppoA79.webp"
   },
   {
+    id: 17,
     nombre: "Oppo Pad 2",
     descripcionCorta: "Tablet premium con pantalla 144Hz y sonido envolvente.",
     precio: 499,
@@ -120,6 +143,7 @@ const mi_array = [
     imagen: "img/OppoPad2.webp"
   },
   {
+    id: 18,
     nombre: "Oppo Enco Air 3 Pro",
     descripcionCorta: "Audio inalámbrico Hi-Res con cancelación de ruido inteligente.",
     precio: 89,
@@ -127,7 +151,6 @@ const mi_array = [
     imagen: "img/xiaomi15tpro.jpg"
   }
 ];
-
 
 function crearTarjeta(producto) {
   return `
@@ -145,7 +168,10 @@ function crearTarjeta(producto) {
       
       <div class="tarjeta-precio">
         <span class="precio">${producto.precio}€</span>
-        <button class="btn-ver-mas" data-nombre="${producto.nombre}">
+        <button 
+          class="btn-ver-mas" 
+          onclick="agregarCarrito(${producto.id}); mostrarNotificacion('Producto añadido')" 
+          data-nombre="${producto.nombre}">
           <span class="icono-carrito">🛒</span>
           Añadir
         </button>
@@ -155,43 +181,118 @@ function crearTarjeta(producto) {
 }
 
 function filtrarProducto(categoria) {
-  if (!categoria || categoria === 'todos') return mi_array;
-  return mi_array.filter(pepe => pepe.categoria === categoria);
+  if (!categoria || categoria === 'todos') {
+    console.error("No hay ninguna categoría seleccionada");
+    return mi_array;
+  }
+  return mi_array.filter(producto => producto.categoria === categoria);
 }
 
 function mostrarTarjetas(productos) {
   const contenedor = document.querySelector('.tarjetas');
-  contenedor.innerHTML = productos.map(crearTarjeta).join('');
-  console.log('Pintadas ' + productos.length + ' tarjetas');
-}
+  if (!contenedor) {
+    console.error(' No se encontró el contenedor .tarjetas');
+    return;
+  }
   
+  contenedor.innerHTML = productos.map(crearTarjeta).join('');
+  console.log(' Pintadas ' + productos.length + ' tarjetas');/*Para verificar que se haya renderizado correctamente*/
+}
+
 function configurarFiltros() {
   const input = document.querySelector('#buscar');
+  
+  if (!input) {
+    console.error(' No se encontró el input #buscar');
+    return;
+  }
+  
   input.addEventListener('input', () => {
-   const texto = input.value.trim().toLowerCase();
+    const texto = input.value.trim().toLowerCase();
+    
     if (texto === '') {
       mostrarTarjetas(mi_array);
     } else {
-      const filtrados = mi_array.filter(pepe => pepe.nombre.toLowerCase().includes(texto));
+      const filtrados = mi_array.filter(producto => 
+        producto.nombre.toLowerCase().includes(texto)
+      );
       mostrarTarjetas(filtrados);
     }
   });
 }
-  
-  
-  
 
-    
+function configurarBotonesCategorias() {
+  const botones = document.querySelectorAll('nav button[data-cat]');
   
-  
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      botones.forEach(b => b.classList.remove('activo'));
+      boton.classList.add('activo');
+      
+      const categoria = boton.getAttribute('data-cat');
+      
+      if (categoria === 'filtrar') {
+        return;
+      }
+      
+      const productosFiltrados = filtrarProducto(categoria);
+      mostrarTarjetas(productosFiltrados);
+      
+      console.log(` Filtrando por: ${categoria}`);
+    });
+  });
+}
 
-  
 
-//  INICIALIZAR LA PÁGINA
-  document.addEventListener('DOMContentLoaded', function() {
-  console.log('Iniciando tienda...');
+let carrito = [];
+
+function mostrarNotificacion(mensaje, tipo = 'exito') {
+  const notificacion = document.createElement('div');
+  notificacion.className = `notificacion ${tipo}`;
+  notificacion.textContent = mensaje;
+  
+  document.body.appendChild(notificacion);
+  
+ 
+  setTimeout(() => notificacion.classList.add('mostrar'), 10);
+  
+  setTimeout(() => {
+    notificacion.classList.remove('mostrar');
+    setTimeout(() => notificacion.remove(), 300);
+  }, 3000);
+}
+
+function agregarCarrito(id) {
+  if (id == null) {
+    console.error("ID no válido");
+    return;
+  }
+  
+  const encontrado = mi_array.find(producto => producto.id === id);
+  
+  if (encontrado) {
+    carrito.push(encontrado);
+    console.log('Producto añadido:', encontrado.nombre);
+    console.log('Carrito actual:', carrito);
+    console.log(`Total: ${calcularTotal()}€`);
+  } else {
+    console.error(' Producto no encontrado con ID:', id);
+  }
+}
+
+function calcularTotal() {
+  return carrito.reduce((total, producto) => total + producto.precio, 0);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log(' Iniciando tienda...');
+  
   mostrarTarjetas(mi_array);
   configurarFiltros();
-
+  configurarBotonesCategorias();
   
+  console.log(' Tienda lista con', mi_array.length, 'productos');
 });
+
+
+    

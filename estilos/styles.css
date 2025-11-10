@@ -13,11 +13,11 @@
   --blanco               : #ffffff;
 }
 
-<<<<<<< Updated upstream
+
 /* RESETEO BÁSICO*/
-=======
+
 /*  RESET BÁSICO */
->>>>>>> Stashed changes
+
 * {
   box-sizing             : border-box;
   margin                 : 0;
@@ -306,7 +306,7 @@ h1 {
 .tarjeta-imagen img {
   width                   : 100%;
   aspect-ratio            : 1/1;
-  object-fit              : contain;
+  object-fit              : contain; /*PROPIEDAD MUY IMPORTANTE: ESTUDIAR ESTA PARTE*/
 }
 
 /* INFORMACIÓN DEL PRODUCTO */
@@ -315,7 +315,6 @@ h1 {
   flex-direction          : column;
   gap                     : 8px;
 }
-/* Imagen del producto */
 .tarjeta-imagen {
   width                  : 100%;
   height                 : 250px;
@@ -323,7 +322,7 @@ h1 {
   
   /* GRID para centrar la imagen */
   display                : grid;
-  place-items            : center;           /* Centra horizontal y verticalmente */
+  place-items            : center;/*CENTRA HORIZONTAL Y VERTICALMENTE*/
   
   overflow               : hidden;
 }
@@ -346,7 +345,7 @@ h1 {
   /* GRID para organizar título y descripción */
   display                : grid;
   gap                    : 8px;
-  align-content          : start;            /* Alinea contenido arriba */
+  align-content          : start;/*Al*/
 }
 
 .tarjeta-info h3 {
@@ -375,9 +374,9 @@ h1 {
 
 .precio {
   font-size               : 0.8rem;
-  font-weight             : 900;
+  font-weight             : 800;
   color                   : var(--rojo);
-  letter-spacing          : -0.5px;
+  
 }
 
 /* PIE DE TARJETA / BOTÓN CARRITO */
@@ -394,7 +393,7 @@ h1 {
   align-items            : center;
   gap                    : 16px;
 }
-/* GRID de 2 columnas: Precio | Botón */
+/* GRID DE 2 COLUMNAS: PRECIO | BOTON */
 
 .precio {
   font-weight            : 900;
@@ -403,7 +402,7 @@ h1 {
   white-space            : nowrap;
 }
 
-/* Botón de añadir al carrito */
+/* BOTON DE AÑADIR AL INICIO */
 .btn-ver-mas {
   display                 : inline-grid;
   align-items             : self-end;
@@ -450,16 +449,16 @@ h1 {
   background             : var(--negro);
   color                  : var(--blanco);
   padding                : 40px 24px 20px;
-  margin-top             : auto;             /* Empuja el footer al final */
+  margin-top             : auto;             /* EMPUJA EL FOOTER HASTA EL FINAL */
 }
 
 .footer-contenido {
   max-width              : 1200px;
   margin                 : 0 auto;
   
-  /* GRID responsivo de columnas */
+  /* GRID RESPONSIVO PRACTICADO CON SANTI */
   display                : grid;
-  grid-template-columns  : repeat(auto-fit, minmax(200px, 1fr));  /* Columnas adaptables */
+  grid-template-columns  : repeat(auto-fit, minmax(200px, 1fr));  /* COLUMNAS ADAPTABLES */
   gap                    : 32px;
   margin-bottom          : 20px;
 }
@@ -476,3 +475,16 @@ h1 {
   line-height            : 1.6;
   margin                 : 4px 0;
 }
+.notificacion {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+}
+.notificacion.error {
+  background: #f44336;
+}
+
