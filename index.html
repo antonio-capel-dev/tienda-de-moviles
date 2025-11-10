@@ -5,27 +5,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda de móviles</title>
-  <link rel="stylesheet" href="/estilos/styles.css">
+  <link rel="stylesheet" href="estilos/styles.css">
+</head>
 
-  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda de móviles</title>
+  <link rel="stylesheet" href="estilos/styles.css">
 </head>
 
 <body>
-  <h1>Tienda de móviles</h1>
+  <!-- HEADER -->
+  <header class="header-principal">
+    <div class="header-contenido">
+      <div class="logo">
+        <h2>Telefonia de Antonio Capel S.L.</h2>
+      </div>
+      
+      <div class="buscador">
+        <input type="text" id="buscar" placeholder="Buscar producto...">
+        <button>🔍</button>
+      </div>
+      
+      <div>
+        <button class="btn-carrito" onclick="abrirCarrito()">
+          🛒 Carrito (<span id="badge-carrito">0</span>)
+        </button>
+      </div>
+    </div>
+  </header>
 
+  
+  <section class="hero-banner">
+    <h1>Mediamarkt</h1>
+    <p>Los mejores dispositivos al mejor precio</p>
+  </section>
+
+  
   <nav class="seccion filtros">
-    <input type="text" id="buscar" placeholder="Buscar producto">
     <button data-cat="todos" class="activo">Todos</button>
     <button data-cat="smartphones">Smartphones</button>
     <button data-cat="tablets">Tablets</button>
     <button data-cat="portatiles">Portátiles</button>
     <button data-cat="wearables">Wearables</button>
     <button data-cat="auriculares">Auriculares</button>
-    <button data-cat="filtrar">Filtrar</button>
   </nav>
 
+  
   <section class="tarjetas"></section>
 
+
+  <div class="carrito-modal" id="carrito-modal">
+    <div class="carrito-fondo" onclick="cerrarCarrito()"></div>
+    
+    <div class="carrito-lateral">
+      <div class="carrito-header">
+        <h2> Mi Carrito</h2>
+        <button onclick="cerrarCarrito()">✕</button>
+      </div>
+
+      <div class="carrito-lista" id="carrito-lista">
+
+      </div>
+
+      <div class="carrito-footer">
+        <p>Total: <strong id="total-precio">0€</strong></p>
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button class="btn-comprar">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+
+
+  
   <footer class="footer-principal">
     <div class="footer-contenido">
       <div>
@@ -34,15 +87,12 @@
       </div>
       <div>
         <h4>Contacto</h4>
-        <p> antonio.capel.dev@gmail.com</p>
-      </div>
-      <div>
-        <h4>Desarrollado por</h4>
-        <p>Antonio - DAW Málaga 2025</p>
-      </div>
+        <p>antonio.capel.dev@gmail.com</p>
+      </div>>
     </div>
   </footer>
 
+  <script src="js/javascript-DEFINITIVO-corregido.js"></script>
+</body>
 
-<script src="js/javascript-DEFINITIVO-corregido.js"></script>
 </html>

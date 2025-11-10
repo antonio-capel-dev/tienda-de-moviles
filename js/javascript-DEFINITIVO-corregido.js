@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 const mi_array = [
   {
     id: 1,
@@ -12,7 +5,7 @@ const mi_array = [
     descripcionCorta: "El buque insignia definitivo con cámara de 200MP y diseño en titanio.",
     precio: 1399,
     categoria: "smartphones",
-    imagen: "img/Samsungs24ultra.webp"
+    imagen: "img/Samsungs24ultra.webp",
   },
   {
     id: 2,
@@ -20,7 +13,7 @@ const mi_array = [
     descripcionCorta: "El equilibrio perfecto entre potencia premium y tamaño manejable.",
     precio: 1099,
     categoria: "smartphones",
-    imagen: "img/Samsungs24plus.webp"
+    imagen: "img/Samsungs24plus.webp",
   },
   {
     id: 3,
@@ -28,7 +21,7 @@ const mi_array = [
     descripcionCorta: "Tablet versátil con S Pen incluido para crear y producir.",
     precio: 549,
     categoria: "tablets",
-    imagen: "img/Samsungs24plus.webp"
+    imagen: "img/Samsungs24plus.webp",
   },
   {
     id: 4,
@@ -36,7 +29,7 @@ const mi_array = [
     descripcionCorta: "Fotografía profesional Leica y procesamiento de élite.",
     precio: 799,
     categoria: "smartphones",
-    imagen: "img/Xiaomi13Lite.webp"
+    imagen: "img/Xiaomi13Lite.webp",
   },
   {
     id: 5,
@@ -44,7 +37,7 @@ const mi_array = [
     descripcionCorta: "El rey de la gama media con cámara de 200MP.",
     precio: 399,
     categoria: "smartphones",
-    imagen: "img/RedmiNote13Pro+5G.webp"
+    imagen: "img/RedmiNote13Pro+5G.webp",
   },
   {
     id: 6,
@@ -52,7 +45,7 @@ const mi_array = [
     descripcionCorta: "Potencia y pantalla espectacular para productividad extrema.",
     precio: 499,
     categoria: "tablets",
-    imagen: "img/XiaomiRedmiPad2Pro.webp"
+    imagen: "img/XiaomiRedmiPad2Pro.webp",
   },
   {
     id: 7,
@@ -60,7 +53,7 @@ const mi_array = [
     descripcionCorta: "Seguimiento completo de salud con pantalla AMOLED grande.",
     precio: 79,
     categoria: "wearables",
-    imagen: "img/XIAOMISmartbandXiaomiRedmiSmartBandProNegro.webp"
+    imagen: "img/XIAOMISmartbandXiaomiRedmiSmartBandProNegro.webp",
   },
   {
     id: 8,
@@ -68,7 +61,7 @@ const mi_array = [
     descripcionCorta: "Diseño ultraligero con cámaras duales para selfies perfectos.",
     precio: 399,
     categoria: "smartphones",
-    imagen: "img/Xiaomi13Lite.webp"
+    imagen: "img/Xiaomi13Lite.webp",
   },
   {
     id: 9,
@@ -76,7 +69,7 @@ const mi_array = [
     descripcionCorta: "El iPhone más avanzado con titanio y chip A17 Pro.",
     precio: 1469,
     categoria: "smartphones",
-    imagen: "img/iphone17promax.webp"
+    imagen: "img/iphone17promax.webp",
   },
   {
     id: 10,
@@ -84,7 +77,7 @@ const mi_array = [
     descripcionCorta: "La experiencia iPhone esencial con Dynamic Island y USB-C.",
     precio: 959,
     categoria: "smartphones",
-    imagen: "img/Iphone17.webp"
+    imagen: "img/Iphone17.webp",
   },
   {
     id: 11,
@@ -92,7 +85,7 @@ const mi_array = [
     descripcionCorta: "Portátil ultraligero con chip M3 y 18 horas de autonomía.",
     precio: 1299,
     categoria: "portatiles",
-    imagen: "img/AppleMacbookAir.webp"
+    imagen: "img/AppleMacbookAir.webp",
   },
   {
     id: 12,
@@ -100,7 +93,7 @@ const mi_array = [
     descripcionCorta: "Potencia profesional en diseño ultraligero y versátil.",
     precio: 699,
     categoria: "tablets",
-    imagen: "img/Ipad-Air-m2-11.webp"
+    imagen: "img/Ipad-Air-m2-11.webp",
   },
   {
     id: 13,
@@ -108,7 +101,7 @@ const mi_array = [
     descripcionCorta: "Salud avanzada con chip S9 y gestos Double Tap.",
     precio: 449,
     categoria: "wearables",
-    imagen: "img/AppleWatchSeries9.webp"
+    imagen: "img/AppleWatchSeries9.webp",
   },
   {
     id: 14,
@@ -116,7 +109,7 @@ const mi_array = [
     descripcionCorta: "Sistema fotográfico Hasselblad para fotografía profesional móvil.",
     precio: 1199,
     categoria: "smartphones",
-    imagen: "img/OppoFindX3pro5g.webp"
+    imagen: "img/OppoFindX3pro5g.webp",
   },
   {
     id: 15,
@@ -124,7 +117,7 @@ const mi_array = [
     descripcionCorta: "Elegancia curva con cámara Sony y carga ultrarrápida.",
     precio: 599,
     categoria: "smartphones",
-    imagen: "img/OppoReno6Pro5g.webp"
+    imagen: "img/OppoReno6Pro5g.webp",
   },
   {
     id: 16,
@@ -132,7 +125,7 @@ const mi_array = [
     descripcionCorta: "5G accesible con pantalla fluida y batería de larga duración.",
     precio: 249,
     categoria: "smartphones",
-    imagen: "img/OppoA79.webp"
+    imagen: "img/OppoA79.webp",
   },
   {
     id: 17,
@@ -140,7 +133,7 @@ const mi_array = [
     descripcionCorta: "Tablet premium con pantalla 144Hz y sonido envolvente.",
     precio: 499,
     categoria: "tablets",
-    imagen: "img/OppoPad2.webp"
+    imagen: "img/OppoPad2.webp",
   },
   {
     id: 18,
@@ -148,10 +141,13 @@ const mi_array = [
     descripcionCorta: "Audio inalámbrico Hi-Res con cancelación de ruido inteligente.",
     precio: 89,
     categoria: "auriculares",
-    imagen: "img/xiaomi15tpro.jpg"
-  }
+    imagen: "img/xiaomi15tpro.jpg",
+  },
 ];
 
+let carrito = [];
+
+// ==================== RENDERIZADO ====================
 function crearTarjeta(producto) {
   return `
     <article class="tarjeta">
@@ -168,131 +164,159 @@ function crearTarjeta(producto) {
       
       <div class="tarjeta-precio">
         <span class="precio">${producto.precio}€</span>
-        <button 
-          class="btn-ver-mas" 
-          onclick="agregarCarrito(${producto.id}); mostrarNotificacion('Producto añadido')" 
-          data-nombre="${producto.nombre}">
-          <span class="icono-carrito">🛒</span>
-          Añadir
+        <button class="btn-ver-mas" onclick="agregarCarrito(${producto.id})">
+          🛒 Añadir
         </button>
       </div>
     </article>
   `;
 }
 
-function filtrarProducto(categoria) {
-  if (!categoria || categoria === 'todos') {
-    console.error("No hay ninguna categoría seleccionada");
-    return mi_array;
-  }
-  return mi_array.filter(producto => producto.categoria === categoria);
+function mostrarTarjetas(productos) {
+  const contenedor = document.querySelector(".tarjetas");
+  contenedor.innerHTML = productos.map(crearTarjeta).join("");
 }
 
-function mostrarTarjetas(productos) {
-  const contenedor = document.querySelector('.tarjetas');
-  if (!contenedor) {
-    console.error(' No se encontró el contenedor .tarjetas');
-    return;
+// ==================== FILTRADO ====================
+function filtrarProducto(categoria) {
+  if (categoria === "todos") {
+    return mi_array;
   }
-  
-  contenedor.innerHTML = productos.map(crearTarjeta).join('');
-  console.log(' Pintadas ' + productos.length + ' tarjetas');/*Para verificar que se haya renderizado correctamente*/
+  return mi_array.filter(p => p.categoria === categoria);
 }
 
 function configurarFiltros() {
-  const input = document.querySelector('#buscar');
-  
-  if (!input) {
-    console.error(' No se encontró el input #buscar');
-    return;
-  }
-  
-  input.addEventListener('input', () => {
-    const texto = input.value.trim().toLowerCase();
-    
-    if (texto === '') {
-      mostrarTarjetas(mi_array);
-    } else {
-      const filtrados = mi_array.filter(producto => 
-        producto.nombre.toLowerCase().includes(texto)
-      );
-      mostrarTarjetas(filtrados);
-    }
+  const input = document.querySelector("#buscar");
+  input.addEventListener("input", () => {
+    const texto = input.value.toLowerCase();
+    const filtrados = mi_array.filter(p => 
+      p.nombre.toLowerCase().includes(texto)
+    );
+    mostrarTarjetas(filtrados);
   });
 }
 
 function configurarBotonesCategorias() {
-  const botones = document.querySelectorAll('nav button[data-cat]');
-  
+  const botones = document.querySelectorAll("nav button[data-cat]");
   botones.forEach(boton => {
-    boton.addEventListener('click', () => {
-      botones.forEach(b => b.classList.remove('activo'));
-      boton.classList.add('activo');
-      
-      const categoria = boton.getAttribute('data-cat');
-      
-      if (categoria === 'filtrar') {
-        return;
-      }
-      
-      const productosFiltrados = filtrarProducto(categoria);
-      mostrarTarjetas(productosFiltrados);
-      
-      console.log(` Filtrando por: ${categoria}`);
+    boton.addEventListener("click", () => {
+      botones.forEach(b => b.classList.remove("activo"));
+      boton.classList.add("activo");
+      const categoria = boton.getAttribute("data-cat");
+      const productos = filtrarProducto(categoria);
+      mostrarTarjetas(productos);
     });
   });
 }
 
+// ==================== CARRITO ====================
+function cargarCarrito() {
+  const guardado = localStorage.getItem('carrito');
+  if (guardado) {
+    carrito = JSON.parse(guardado);
+  }
+  actualizarBadge();
+}
 
-let carrito = [];
-
-function mostrarNotificacion(mensaje, tipo = 'exito') {
-  const notificacion = document.createElement('div');
-  notificacion.className = `notificacion ${tipo}`;
-  notificacion.textContent = mensaje;
-  
-  document.body.appendChild(notificacion);
-  
- 
-  setTimeout(() => notificacion.classList.add('mostrar'), 10);
-  
-  setTimeout(() => {
-    notificacion.classList.remove('mostrar');
-    setTimeout(() => notificacion.remove(), 300);
-  }, 3000);
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarBadge();
 }
 
 function agregarCarrito(id) {
-  if (id == null) {
-    console.error("ID no válido");
+  const producto = mi_array.find(p => p.id === id);
+  if (producto) {
+    carrito.push(producto);
+    guardarCarrito();
+    mostrarNotificacion('✅ Producto añadido');
+  }
+}
+
+function eliminarDelCarrito(index) {
+  carrito.splice(index, 1);
+  guardarCarrito();
+  renderizarCarrito();
+  mostrarNotificacion('🗑️ Producto eliminado', 'error');
+}
+
+function vaciarCarrito() {
+  if (carrito.length === 0) {
+    mostrarNotificacion('ℹ️ El carrito está vacío', 'error');
     return;
   }
-  
-  const encontrado = mi_array.find(producto => producto.id === id);
-  
-  if (encontrado) {
-    carrito.push(encontrado);
-    console.log('Producto añadido:', encontrado.nombre);
-    console.log('Carrito actual:', carrito);
-    console.log(`Total: ${calcularTotal()}€`);
-  } else {
-    console.error(' Producto no encontrado con ID:', id);
+  if (confirm('¿Vaciar el carrito?')) {
+    carrito = [];
+    guardarCarrito();
+    renderizarCarrito();
+    mostrarNotificacion('🗑️ Carrito vaciado');
   }
 }
 
 function calcularTotal() {
-  return carrito.reduce((total, producto) => total + producto.precio, 0);
+  return carrito.reduce((total, p) => total + p.precio, 0);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log(' Iniciando tienda...');
+function actualizarBadge() {
+  document.getElementById('badge-carrito').textContent = carrito.length;
+}
+
+// ==================== INTERFAZ CARRITO ====================
+function abrirCarrito() {
+  document.getElementById('carrito-modal').classList.add('activo');
+  renderizarCarrito();
+}
+
+function cerrarCarrito() {
+  document.getElementById('carrito-modal').classList.remove('activo');
+}
+
+function renderizarCarrito() {
+  const contenedor = document.getElementById('carrito-lista');
+  const total = document.getElementById('total-precio');
   
+  if (carrito.length === 0) {
+    contenedor.innerHTML = `
+      <div class="carrito-vacio">
+        <h3>🛒</h3>
+        <p>Tu carrito está vacío</p>
+      </div>
+    `;
+    total.textContent = '0€';
+    return;
+  }
+  
+  contenedor.innerHTML = carrito.map((p, i) => `
+    <div class="carrito-item">
+      <img src="${p.imagen}" alt="${p.nombre}">
+      <div class="carrito-item-info">
+        <h4>${p.nombre}</h4>
+        <span class="precio-item">${p.precio}€</span>
+      </div>
+      <button class="btn-eliminar" onclick="eliminarDelCarrito(${i})">🗑️</button>
+    </div>
+  `).join('');
+  
+  total.textContent = calcularTotal() + '€';
+}
+
+// ==================== NOTIFICACIONES ====================
+function mostrarNotificacion(mensaje, tipo = "exito") {
+  const notif = document.createElement("div");
+  notif.className = `notificacion ${tipo}`;
+  notif.textContent = mensaje;
+  document.body.appendChild(notif);
+  
+  setTimeout(() => notif.classList.add("mostrar"), 10);
+  setTimeout(() => {
+    notif.classList.remove("mostrar");
+    setTimeout(() => notif.remove(), 300);
+  }, 2500);
+}
+
+// ==================== INICIO ====================
+document.addEventListener("DOMContentLoaded", () => {
+  cargarCarrito();
   mostrarTarjetas(mi_array);
   configurarFiltros();
   configurarBotonesCategorias();
-  
-  console.log(' Tienda lista con', mi_array.length, 'productos');
-});
-
-
-    
+})
