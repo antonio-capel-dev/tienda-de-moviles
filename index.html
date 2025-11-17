@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda de móviles</title>
+  <link rel="stylesheet" href="estilos/styles.css">
+</head>
+
+<body>
+
+  <header class="header-principal">
+    <div class="header-contenido">
+      <div class="logo">
+        <h2>Telefonia Capel</h2>
+      </div>
+
+      <div class="buscador">
+        <input type="text" id="buscar" placeholder="Buscar producto...">
+        <button>🔍</button>
+      </div>
+
+      <div>
+        <button class="btn-carrito" onclick="abrirCarrito()">
+          🛒 Carrito (<span id="badge-carrito">0</span>)
+        </button>
+      </div>
+    </div>
+
+
+  </header>
+
+
+  <section class="hero-banner">
+    <h1>Mediamarkt</h1>
+    <p>Bienvenidos a la tienda de Antonio Capel, donde te asesoramos el mejor dispositivo para ti, a un precio exclusivo
+    </p>
+  </section>
+
+
+  <nav class="seccion filtros">
+    <button data-cat="todos" class="activo">Todos</button>
+    <button data-cat="smartphones">Smartphones</button>
+    <button data-cat="tablets">Tablets</button>
+    <button data-cat="portatiles">Portátiles</button>
+    <button data-cat="wearables">Wearables</button>
+    <button data-cat="auriculares">Auriculares</button>
+  </nav>
+
+
+
+  <section class="tarjetas"></section>
+
+  <section class="faq">
+    <h2>PREGUNTAS FRECUENTES</h2>
+
+
+    <div class="faq-item" id="faq-item-1">
+      <button class="faq-pregunta" onclick="manejarPreguntaFrecuentes(1)">
+        <h3>¿Ofrecéis garantía en los móviles que vendéis?</h3>
+        <span class="faq-icono" id="icono-1">→</span>
+      </button>
+      <div class="faq-respuesta" id="respuesta-1">
+        <p>Sí. Todos nuestros móviles cuentan con 2 años de garantía oficial. Esto cubre cualquier defecto de fábrica o
+          fallo técnico que no haya sido causado por un mal uso del dispositivo.
+          Si tu móvil presenta un problema dentro de este periodo:
+          Lo revisamos en tienda.
+          Si es un fallo de hardware o software cubierto, gestionamos la reparación o sustitución.
+          Te mantenemos informado en cada paso para que no pierdas tiempo.
+          La garantía no cubre daños por golpes, agua o manipulación no autorizada.
+          Si tienes dudas, puedes consultarnos por WhatsApp y te guiamos en el proceso.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-item-2">
+      <button class="faq-pregunta" onclick="manejarPreguntaFrecuentes(2)">
+        <h3>¿Los móviles son nuevos o reacondicionados?</h3>
+        <span class="faq-icono" id="icono-2">→</span>
+      </button>
+
+
+      <div class="faq-respuesta" id="respuesta-2">
+        <p>Los nuevos vienen en su caja original sellada.
+          Los reacondicionados pasan por un proceso de revisión profesional:
+          Test de batería
+          Pruebas de botones, pantalla y cámara
+          Limpieza y restauración completa
+          Garantía de 12 meses
+          Siempre indicamos claramente el estado del dispositivo para que elijas con total confianza.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-item-3">
+      <button class="faq-pregunta" onclick="manejarPreguntaFrecuentes(3)">
+        <h3>¿Cómo puedo contactar para soporte técnico?</h3>
+        <span class="faq-icono" id="icono-3">→</span>
+      </button>
+
+      <div class="faq-respuesta" id="respuesta-3">
+        <p>Puedes contactarnos de varias formas para recibir soporte técnico:
+       WhatsApp: +34 XXX XXX XXX (respuesta rápida)
+       Teléfono: XXX XXX XXX (horario de tienda)
+       Email: soporte@telefoniacapel.com
+       Presencial: En nuestra tienda con cita previa
+       
+       Nuestro equipo técnico te ayudará con configuración, dudas sobre el dispositivo, 
+       problemas de software básicos y te guiaremos en cualquier proceso de garantía.
+       Tiempo de respuesta: WhatsApp en 2 horas, email en 24 horas.</p>
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <div class="carrito-modal" id="carrito-modal">
+    <div class="carrito-fondo" onclick="cerrarCarrito()"></div>
+
+    <div class="carrito-lateral">
+      <div class="carrito-header">
+        <h2> Mi Carrito</h2>
+        <button onclick="cerrarCarrito()">✕</button>
+      </div>
+
+      <div class="carrito-lista" id="carrito-lista">
+
+      </div>
+
+      <div class="carrito-footer">
+        <p>Total: <strong id="total-precio">0€</strong></p>
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button class="btn-comprar">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="js/javascript-DEFINITIVO-corregido.js"></script>
+</body>
+
+</html>
