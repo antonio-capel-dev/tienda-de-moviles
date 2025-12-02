@@ -176,7 +176,7 @@ const mi_array = [
 // VARIABLES GLOBALES
 // ============================================
 let carrito = [];          // Array de productos en el carrito
-let stockProductos = {};   // Objeto que gestiona el stock por ID de producto
+let stockProductos = {};   // Objeto que gestiona el stock por ID de producto  
 let favoritos = [];        // Array de IDs de productos marcados como favoritos
 
 
@@ -185,35 +185,17 @@ let favoritos = [];        // Array de IDs de productos marcados como favoritos
 // ============================================
 
 /**
- * Inicializa el stock desde localStorage o desde el array inicial
+ * Inicializa el stock desde el array de productos
  * Se ejecuta al cargar la página
+ * NOTA: El stock se resetea cada vez que refrescas (no se guarda)
  */
 function inicializarStock() {
-  // Intenta cargar stock guardado en localStorage
-  const stockGuardado = localStorage.getItem('stock');
-  
-  if (stockGuardado) {
-    // Si existe stock guardado, lo cargamos
-    stockProductos = JSON.parse(stockGuardado);
-  } else {
-    // Si no existe, inicializamos con valores del array mi_array
-    // Usamos forEach para recorrer cada producto
-    mi_array.forEach(producto => {
-      // Guardamos el stock de cada producto usando su ID como clave
-      stockProductos[producto.id] = producto.stock || 10; // Default 10 si no tiene
-    });
-    // Guardamos en localStorage
-    guardarStock();
-  }
-}
-
-/**
- * Guarda el stock actual en localStorage
- * Permite persistencia entre sesiones del navegador
- */
-function guardarStock() {
-  // JSON.stringify convierte el objeto a string para guardarlo
-  localStorage.setItem('stock', JSON.stringify(stockProductos));
+  // Inicializamos el stock con los valores originales del array
+  // Usamos forEach para recorrer cada producto
+  mi_array.forEach(producto => {
+    // Guardamos el stock de cada producto usando su ID como clave
+    stockProductos[producto.id] = producto.stock || 10; // Default 10 si no tiene
+  });
 }
 
 /**
@@ -222,7 +204,7 @@ function guardarStock() {
  * @returns {number} - Cantidad de stock disponible (0 si no existe)
  */
 function obtenerStock(productoId) {
-  return stockProductos[productoId] || 0;
+  return stockProductos[productoId] ||0;
 }
 
 /**
@@ -236,8 +218,6 @@ function reducirStock(productoId, cantidad = 1) {
   if (stockProductos[productoId] >= cantidad) {
     // Reducimos el stock
     stockProductos[productoId] -= cantidad;
-    // Guardamos en localStorage
-    guardarStock();
     return true;
   }
   return false;
@@ -245,40 +225,18 @@ function reducirStock(productoId, cantidad = 1) {
 
 /**
  * Aumenta el stock de un producto (al eliminar del carrito)
- * @param {number} productoId - ID del producto
+ * @param {number} productoId - ID del producto Product
  * @param {number} cantidad - Cantidad a aumentar (default 1)
  */
 function aumentarStock(productoId, cantidad = 1) {
   // Aumentamos el stock
   stockProductos[productoId] += cantidad;
-  // Guardamos en localStorage
-  guardarStock();
 }
 
 
 // ============================================
 // SISTEMA DE FAVORITOS - Gestión Inmutable
 // ============================================
-
-/**
- * Carga los favoritos desde localStorage
- * Se ejecuta al iniciar la página
- */
-function cargarFavoritos() {
-  const favoritosGuardados = localStorage.getItem('favoritos');
-  if (favoritosGuardados) {
-    // Si existen favoritos guardados, los parseamos
-    favoritos = JSON.parse(favoritosGuardados);
-  }
-}
-
-/**
- * Guarda los favoritos en localStorage
- * Permite persistencia entre sesiones
- */
-function guardarFavoritos() {
-  localStorage.setItem('favoritos', JSON.stringify(favoritos));
-}
 
 /**
  * Verifica si un producto está marcado como favorito
@@ -306,7 +264,7 @@ function toggleFavorito(productoId, event) {
   event.stopPropagation();
   
   // event.currentTarget siempre será el botón (tiene el onclick)
-  const botonFavorito = event.currentTarget;
+const botonFavorito = event.currentTarget;
   
   // Buscamos la imagen del corazón dentro del botón
   // querySelector busca DENTRO del botón
@@ -338,8 +296,7 @@ function toggleFavorito(productoId, event) {
     mostrarNotificacion('Añadido a favoritos');
   }
   
-  // Guardar cambios en localStorage
-  guardarFavoritos();
+  // NOTA: Los favoritos NO se guardan, se pierden al refrescar
 }
 
 
@@ -413,7 +370,7 @@ function mostrarTarjetas(productos) {
 
 
 // ============================================
-// FILTRADO DE PRODUCTOS
+// FILTR ADO DE PRODUCTOS
 // ============================================
 
 /**
@@ -478,6 +435,7 @@ function configurarBotonesCategorias() {
 
 /**
  * Carga el carrito desde localStorage al iniciar
+ * NOTA: El carrito SÍ se guarda (ya lo tenías así)
  */
 function cargarCarrito() {
   const guardado = localStorage.getItem('carrito');
@@ -606,7 +564,7 @@ function eliminarDelCarrito(index) {
 }
 
 /**
- * Vacía completamente el carrito Y DEVUELVE TODO EL STOCK
+ * Vacía completamente del carrito Y DEVUELVE TODO EL STOCK
  */
 function vaciarCarrito() {
   if (carrito.length === 0) {
@@ -852,18 +810,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Inicializar sistema de stock
   inicializarStock();
   
-  // 2. Cargar favoritos guardados
-  cargarFavoritos();
-  
-  // 3. Cargar carrito guardado
+  // 2. Cargar carrito guardado (SÍ usa localStorage)
   cargarCarrito();
   
-  // 4. Mostrar todos los productos
+  // 3. Mostrar todos los productos
   mostrarTarjetas(mi_array);
   
-  // 5. Configurar filtros de búsqueda
+  // 4. Configurar filtros de búsqueda
   configurarFiltros();
   
-  // 6. Configurar botones de categorías
+  // 5. Configurar botones de categorías
   configurarBotonesCategorias();
 });
