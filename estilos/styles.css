@@ -182,6 +182,7 @@ body {
   transform: translateY(-4px);
 }
 .tarjeta-imagen {
+  position: relative; /* IMPORTANTE para posicionar badges absolutos */
   width: 100%;
   height: 200px;
   display: flex;
@@ -541,3 +542,96 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   SISTEMA DE STOCK - Badge de disponibilidad
+   ============================================ */
+.stock-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--success);
+  color: var(--blanco);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: var(--text-xs);
+  font-weight: bold;
+  box-shadow: var(--shadow-s);
+  transition: all var(--transition-normal);
+  z-index: 2;
+}
+
+.stock-badge.sin-stock {
+  background: var(--error);
+  animation: pulse 2s infinite;
+}
+
+/* Animación de pulso para productos sin stock */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ============================================
+   SISTEMA DE FAVORITOS - Botón de corazón
+   ============================================ */
+.btn-favorito {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--blanco);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-s);
+  z-index: 2;
+}
+
+.btn-favorito:hover {
+  transform: scale(1.15);
+  box-shadow: var(--shadow-m);
+  background: var(--neutral-50);
+}
+
+.btn-favorito:active {
+  transform: scale(0.95);
+}
+
+.btn-favorito .icon-heart {
+  width: 24px;
+  height: 24px;
+  transition: all var(--transition-normal);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+}
+
+.btn-favorito .icon-heart.activo {
+  transform: scale(1.2);
+  animation: heartBeat 0.3s ease;
+}
+
+/* Animación de latido del corazón al marcar favorito */
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.25);
+  }
+}
+
