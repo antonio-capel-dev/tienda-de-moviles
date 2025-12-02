@@ -204,7 +204,7 @@ function esFavorito(productoId) {
   return favoritos.includes(productoId);
 }
 
-// event.currentTarget = elemento con el onclick (el botón)
+// event.currentTarget = elemento con el evento (el botón)
 // event.target = elemento que recibió el click (puede ser la imagen dentro)
 function toggleFavorito(productoId, event) {
   event.stopPropagation();
@@ -234,19 +234,30 @@ function crearTarjeta(producto) {
   const stockActual = obtenerStock(producto.id);
   const esProductoFavorito = esFavorito(producto.id);
   
-  const corazonSrc = esProductoFavorito ? 'corazon-rojo.svg' : 'corazon.svg';
-  const corazonClase = esProductoFavorito ? 'icon-heart activo' : 'icon-heart';
+  let corazonSrc;
+  let corazonClase;
   
-  const stockBadge = stockActual > 0 
-    ? `<span class="stock-badge">Stock: ${stockActual}</span>`
-    : `<span class="stock-badge sin-stock">Sin stock</span>`;
+  if (esProductoFavorito) {
+    corazonSrc = 'corazon-rojo.svg';
+    corazonClase = 'icon-heart activo';
+  } else {
+    corazonSrc = 'corazon.svg';
+    corazonClase = 'icon-heart';
+  }
+  
+  let stockBadge;
+  if (stockActual > 0) {
+    stockBadge = `<span class="stock-badge">Stock: ${stockActual}</span>`;
+  } else {
+    stockBadge = `<span class="stock-badge sin-stock">Sin stock</span>`;
+  }
   
   return `
-    <article class="tarjeta">
+    <article class="tarjeta" data-producto-id="${producto.id}">
       <div class="tarjeta-imagen">
         <img src="${producto.imagen}" alt="${producto.nombre}">
         ${stockBadge}
-        <button class="btn-favorito" onclick="toggleFavorito(${producto.id}, event)">
+        <button class="btn-favorito" data-id="${producto.id}">
           <img class="${corazonClase}" src="${corazonSrc}" alt="Favorito">
         </button>
       </div>
@@ -260,7 +271,7 @@ function crearTarjeta(producto) {
       
       <div class="tarjeta-precio">
         <span class="precio">${producto.precio}€</span>
-        <button class="btn-ver-mas" onclick="agregarCarrito(${producto.id}, event)">
+        <button class="btn-ver-mas" data-id="${producto.id}">
             <i class="bi bi-cart-plus"></i> Añadir
         </button>
       </div>
@@ -271,6 +282,29 @@ function crearTarjeta(producto) {
 function mostrarTarjetas(productos) {
   const contenedor = document.querySelector(".tarjetas");
   contenedor.innerHTML = productos.map(crearTarjeta).join("");
+  
+  // Configurar eventos usando addEventListener
+  configurarEventosTarjetas();
+}
+
+function configurarEventosTarjetas() {
+  // Eventos para botones de favoritos
+  const botonesFavoritos = document.querySelectorAll('.btn-favorito');
+  botonesFavoritos.forEach(boton => {
+    boton.addEventListener('click', (event) => {
+      const id = parseInt(boton.getAttribute('data-id'));
+      toggleFavorito(id, event);
+    });
+  });
+  
+  // Eventos para botones de añadir al carrito
+  const botonesAgregar = document.querySelectorAll('.btn-ver-mas');
+  botonesAgregar.forEach(boton => {
+    boton.addEventListener('click', (event) => {
+      const id = parseInt(boton.getAttribute('data-id'));
+      agregarCarrito(id, event);
+    });
+  });
 }
 
 
@@ -346,11 +380,13 @@ function agregarCarrito(id, event) {
     }
     
     // INMUTABLE: map crea un nuevo carrito
-    carrito = carrito.map(p => 
-      p.id === id 
-        ? { ...p, cantidad: p.cantidad + 1 }
-        : p
-    );
+    carrito = carrito.map(p => {
+      if (p.id === id) {
+        return { ...p, cantidad: p.cantidad + 1 };
+      } else {
+        return p;
+      }
+    });
   } else {
     // INMUTABLE: spread crea un nuevo carrito
     carrito = [...carrito, { ...producto, cantidad: 1 }];
@@ -440,11 +476,13 @@ function cambiarCantidad(index, cambio) {
   }
   
   // INMUTABLE: map crea un nuevo carrito
-  carrito = carrito.map((p, i) => 
-    i === index 
-      ? { ...p, cantidad: nuevaCantidad }
-      : p
-  );
+  carrito = carrito.map((p, i) => {
+    if (i === index) {
+      return { ...p, cantidad: nuevaCantidad };
+    } else {
+      return p;
+    }
+  });
   
   guardarCarrito();
   renderizarCarrito();
@@ -478,6 +516,32 @@ function cerrarCarrito() {
   document.getElementById('carrito-modal').classList.remove('activo');
 }
 
+function configurarEventosCarrito() {
+  // Botón de abrir carrito
+  const btnCarrito = document.querySelector('.btn-carrito');
+  if (btnCarrito) {
+    btnCarrito.addEventListener('click', abrirCarrito);
+  }
+  
+  // Botón de vaciar carrito
+  const btnVaciar = document.querySelector('.carrito-footer button:first-of-type');
+  if (btnVaciar) {
+    btnVaciar.addEventListener('click', vaciarCarrito);
+  }
+  
+  // Fondo del modal para cerrar
+  const fondoModal = document.querySelector('.carrito-fondo');
+  if (fondoModal) {
+    fondoModal.addEventListener('click', cerrarCarrito);
+  }
+  
+  // Botón X para cerrar
+  const btnCerrar = document.querySelector('.carrito-header button');
+  if (btnCerrar) {
+    btnCerrar.addEventListener('click', cerrarCarrito);
+  }
+}
+
 function renderizarCarrito() {
   const contenedor = document.getElementById('carrito-lista');
   const total = document.getElementById('total-precio');
@@ -506,16 +570,48 @@ function renderizarCarrito() {
           <span class="precio-item">(${p.precio}€ x${p.cantidad})</span>
         </p>
         <div class="controles-cantidad">
-          <button class="btn-cantidad" onclick="cambiarCantidad(${i}, -1)">-</button>
+          <button class="btn-cantidad btn-decrementar" data-index="${i}">-</button>
           <span class="cantidad-actual">${p.cantidad}</span>
-          <button class="btn-cantidad" onclick="cambiarCantidad(${i}, 1)">+</button>
+          <button class="btn-cantidad btn-incrementar" data-index="${i}">+</button>
         </div>
       </div>
-      <button class="btn-eliminar" onclick="eliminarDelCarrito(${i})"></button>
+      <button class="btn-eliminar" data-index="${i}"></button>
     </div>
   `).join('');
   
   total.textContent = calcularTotal() + '€';
+  
+  // Configurar eventos de los botones del carrito
+  configurarEventosBotonesCarrito();
+}
+
+function configurarEventosBotonesCarrito() {
+  // Botones de incrementar
+  const botonesIncrementar = document.querySelectorAll('.btn-incrementar');
+  botonesIncrementar.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const index = parseInt(boton.getAttribute('data-index'));
+      cambiarCantidad(index, 1);
+    });
+  });
+  
+  // Botones de decrementar
+  const botonesDecrementar = document.querySelectorAll('.btn-decrementar');
+  botonesDecrementar.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const index = parseInt(boton.getAttribute('data-index'));
+      cambiarCantidad(index, -1);
+    });
+  });
+  
+  // Botones de eliminar
+  const botonesEliminar = document.querySelectorAll('.btn-eliminar');
+  botonesEliminar.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const index = parseInt(boton.getAttribute('data-index'));
+      eliminarDelCarrito(index);
+    });
+  });
 }
 
 
@@ -546,12 +642,28 @@ function manejarPreguntaFrecuentes(numero) {
   }
 }
 
+function configurarEventosFAQ() {
+  const botonesFAQ = document.querySelectorAll('.faq-pregunta');
+  botonesFAQ.forEach((boton, index) => {
+    boton.addEventListener('click', () => {
+      manejarPreguntaFrecuentes(index + 1);
+    });
+  });
+}
+
 
 // ===== NOTIFICACIONES =====
 
-function mostrarNotificacion(mensaje, tipo = "exito") {
+function mostrarNotificacion(mensaje, tipo) {
+  let tipoFinal;
+  if (tipo) {
+    tipoFinal = tipo;
+  } else {
+    tipoFinal = "exito";
+  }
+  
   const notif = document.createElement("div");
-  notif.className = `notificacion ${tipo}`;
+  notif.className = `notificacion ${tipoFinal}`;
   notif.textContent = mensaje;
   document.body.appendChild(notif);
   
@@ -571,4 +683,6 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarTarjetas(mi_array);
   configurarFiltros();
   configurarBotonesCategorias();
+  configurarEventosCarrito();
+  configurarEventosFAQ();
 });
